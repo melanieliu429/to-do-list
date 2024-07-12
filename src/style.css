@@ -1,0 +1,103 @@
+body {
+    display: flex;
+    color: white;
+    background-color: gray;
+}
+
+.title {
+    font-size: xx-large;
+}
+
+#workspace, #reminders {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+    width: 50vw;
+    height: 100vh;
+    gap: 10px;
+}
+
+#new-workspace, #new-to-do {
+    height: 5rem;
+    width: 40vw;
+    font-size: x-large;
+}
+
+button:hover {
+    opacity: 0.8;
+
+}
+
+.workspaceContainer {
+    display: flex;
+    width: 40vw;
+    margin-bottom: 10px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.workspace-title, .delete {
+    height: 3rem;
+    padding-left: 1rem;
+    font-size: x-large;
+    background-color: gray;
+    border: none;
+    color: white
+}
+
+.task-title {
+    font-size: x-large;
+}
+.taskContainer {
+    font-size: large;
+    padding: 4px 2px;
+}
+
+#createToDo, #createWorkspace {
+    position: fixed;
+    visibility: hidden;
+    background-color: rgb(161, 159, 159);
+    padding: 5rem;
+    border: 3px white solid;
+    border-radius: 0.5cm;
+    width: 40vw;
+    box-shadow: 0 0 10px white;
+    font-size: x-large;
+}
+
+input[type=radio]#high {
+    accent-color: red;
+}
+
+input[type=radio]#medium {
+    accent-color: yellow;
+}
+
+input[type=radio]#low {
+    accent-color: green;
+}
+
+.taskContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 40vw;
+    gap: 20px;
+    padding: 10px;
+    border: 1px solid white;
+    margin-bottom: 10px;
+    border-radius: 4px;
+}
+
+.taskContainer.completed .task-details {
+    text-decoration: line-through;
+}
+
+
+
+.task-details {
+    flex-grow: 1;
+}
+
+
