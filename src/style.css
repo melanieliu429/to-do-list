@@ -21,7 +21,10 @@ body {
 #new-workspace, #new-to-do {
     height: 5rem;
     width: 40vw;
+    border-radius: 0.25cm;
+    border: 1px gray solid;
     font-size: x-large;
+    color: gray;
 }
 
 button:hover {
@@ -57,6 +60,12 @@ button:hover {
 #createToDo, #createWorkspace {
     position: fixed;
     visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     background-color: rgb(161, 159, 159);
     padding: 5rem;
     border: 3px white solid;
@@ -64,6 +73,13 @@ button:hover {
     width: 40vw;
     box-shadow: 0 0 10px white;
     font-size: x-large;
+}
+
+.create {
+    height: 5rem; 
+    color: gray; 
+    border-radius: 0.25cm; 
+    border: 1px gray solid;
 }
 
 input[type=radio]#high {
@@ -93,8 +109,6 @@ input[type=radio]#low {
 .taskContainer.completed .task-details {
     text-decoration: line-through;
 }
-
-
 
 .task-details {
     flex-grow: 1;

@@ -78,7 +78,7 @@ function displayTasks(workspaceName) {
                 </div>
                 <div class="task-details">
                     <div class="task-title">${task.title}</div>
-                    <div>Description: ${task.description}</div>
+                    <div>${task.description}</div>
                     <div>Due Date: ${task.date}</div>
                 </div>
                 <div class="task-delete">
