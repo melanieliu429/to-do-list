@@ -183,6 +183,38 @@ function addWorkspaceEventListeners() {
     });
 }
 
+function generateRandomToDoList() {
+    const workspace1 = newWorkspace("Errands", "#0000ff");
+    addWorkspace(workspace1);
+
+    const tasks1 = [
+        { title: "Buy Groceries", description: "Buy milk, eggs, and bread", date: "2024-08-12", priority: "green" },
+        { title: "Finish Project", description: "Complete the project for the client", date: "2024-08-15", priority: "red" },
+        { title: "Call Doctor", description: "Schedule a check-up appointment", date: "2024-08-20", priority: "yellow" }
+    ];
+
+    tasks1.forEach(task => {
+        addTaskToWorkspace(workspace1.name, newTask(task.title, task.description, task.date, task.priority));
+    });
+
+    const workspace2 = newWorkspace("Personal", "#ff5733");
+    addWorkspace(workspace2);
+
+    const tasks2 = [
+        { title: "Exercise", description: "Go for a 30-minute run", date: "2024-08-11", priority: "green" },
+        { title: "Read Book", description: "Read 'Atomic Habits'", date: "2024-08-18", priority: "yellow" },
+        { title: "Plan Vacation", description: "Plan a weekend getaway", date: "2024-08-25", priority: "red" }
+    ];
+
+    tasks2.forEach(task => {
+        addTaskToWorkspace(workspace2.name, newTask(task.title, task.description, task.date, task.priority));
+    });
+
+    currentWorkspace = workspace1.name;
+    displayTasks(currentWorkspace);
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     displayWorkspaces();
+    generateRandomToDoList();
 });

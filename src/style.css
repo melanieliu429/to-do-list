@@ -49,6 +49,15 @@ button:hover {
     color: white
 }
 
+#workspace {
+    margin-right: 0;
+    border-right: 1px solid white;
+}
+
+#reminders {
+    margin-left: 2rem;
+}
+
 .task-title {
     font-size: x-large;
 }
