@@ -3,6 +3,17 @@ import './style.css';
 let workspaces = {};
 let currentWorkspace = null;
 
+function saveWorkspacesToStorage() {
+    localStorage.setItem('workspaces', JSON.stringify(workspaces));
+}
+
+function loadWorkspacesFromStorage() {
+    const storedWorkspaces = localStorage.getItem('workspaces');
+    if (storedWorkspaces) {
+        workspaces = JSON.parse(storedWorkspaces);
+    }
+}
+
 function newTask(title, description, date, priority) {
     return {
         title: title,
@@ -58,6 +69,7 @@ createToDo.addEventListener("submit", (event) => {
 function addTaskToWorkspace(workspaceName, task) {
     if (workspaces[workspaceName]) {
         workspaces[workspaceName].tasks.push(task);
+        saveWorkspacesToStorage();
         displayTasks(workspaceName);
     }
 }
@@ -99,6 +111,7 @@ function addTaskEventListeners() {
             const index = button.getAttribute("data-index");
             const workspaceName = button.getAttribute("data-workspace");
             workspaces[workspaceName].tasks.splice(index, 1);
+            saveWorkspacesToStorage();
             displayTasks(workspaceName);
         });
     });
@@ -109,6 +122,7 @@ function addTaskEventListeners() {
             const index = button.getAttribute("data-index");
             const workspaceName = button.getAttribute("data-workspace");
             workspaces[workspaceName].tasks[index].completed = !workspaces[workspaceName].tasks[index].completed;
+            saveWorkspacesToStorage();
             displayTasks(workspaceName);
         });
     });
@@ -138,6 +152,7 @@ createWorkspace.addEventListener("submit", (event) => {
 
 function addWorkspace(workspace) {
     workspaces[workspace.name] = workspace;
+    saveWorkspacesToStorage();
     displayWorkspaces();
 }
 
@@ -174,6 +189,7 @@ function addWorkspaceEventListeners() {
         button.addEventListener("click", () => {
             const workspaceName = button.getAttribute("data-workspace");
             delete workspaces[workspaceName];
+            saveWorkspacesToStorage();
             displayWorkspaces();
             if (currentWorkspace === workspaceName) {
                 currentWorkspace = null;
@@ -215,6 +231,14 @@ function generateRandomToDoList() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+    loadWorkspacesFromStorage();
     displayWorkspaces();
-    generateRandomToDoList();
+
+    const workspaceNames = Object.keys(workspaces);
+    if (workspaceNames.length > 0) {
+        currentWorkspace = workspaceNames[0];
+        displayTasks(currentWorkspace);
+    } else {
+        generateRandomToDoList();
+    }
 });
